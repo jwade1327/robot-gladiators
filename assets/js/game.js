@@ -1,17 +1,20 @@
+// Game States
+// "WIN" - Player robot has defeated all enemy robots
+//      * Fight all enemy robots
+//      * Defeat each enemy robot
+// "LOSE" - Player robot's health is zero or less
+
 var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
 
-// You can also log multiple values at once like this
-console.log(playerName, playerAttack, playerHealth);
-
-var enemyName = "Roborto";
+var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
 // create function
-var fight = function() {
+var fight = function(enemyName) {
     // Alert users that they are starting the round
     window.alert("Welcome to Robot Gladiators!");
 
@@ -25,7 +28,7 @@ var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? En
     );
     
     // check enemy's health
-    if (enemyHealth <=0) {
+    if (enemyHealth <= 0) {
         window.alert(enemyName + " has died!");
     } else {
         window.alert(enemyName + " still has " + enemyHealth + " health left.");
@@ -38,7 +41,7 @@ var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? En
     );
 
     // check player's health
-    if (playerHealth <=0) {
+    if (playerHealth <= 0) {
         window.alert(playerName + " has died!");
     } else {
         window.alert(playerName + " still has " + playerHealth + " health left.");
@@ -53,7 +56,7 @@ var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? En
         if (confirmSkip) {
             window.alert(playerName + " has decided to skip this fight. Goodbye!");
             // subtract money from playerMoney for skipping
-            playerMoney = playerMoney -2;
+            playerMoney = playerMoney - 2;
         }
         // if no (false), ask question again by running fight() again
         else {
@@ -66,4 +69,6 @@ var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? En
 };
 
 // execute function
-fight();
+for(var i =0; i < enemyNames.length; i++) {
+    fight(enemyNames[i]);
+};
